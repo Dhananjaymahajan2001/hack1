@@ -3,9 +3,16 @@ from __future__ import annotations
 import asyncio
 import io
 import inspect
+import sys
+from pathlib import Path
 from uuid import uuid4
 
 import streamlit as st
+
+# Ensure project root is importable on Streamlit Cloud and local runs.
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from app.mcp_tools.retrieval_tools import RetrievalTools
 from app.orchestration.graph import Orchestrator
