@@ -7,6 +7,9 @@ import re
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any
 
+# Streamlit Cloud/runtime fix for protobuf descriptor errors through Chroma/OpenTelemetry import chain.
+os.environ.setdefault("PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION", "python")
+
 import chromadb
 import numpy as np
 import tiktoken

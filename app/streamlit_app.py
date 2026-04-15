@@ -3,11 +3,15 @@ from __future__ import annotations
 import asyncio
 import io
 import inspect
+import os
 import sys
 from pathlib import Path
 from uuid import uuid4
 
 import streamlit as st
+
+# Streamlit Cloud fix: avoid protobuf C-extension incompatibility with Chroma/OpenTelemetry stack.
+os.environ.setdefault("PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION", "python")
 
 # Ensure project root is importable on Streamlit Cloud and local runs.
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
